@@ -10,7 +10,7 @@ namespace ReviewFilter.ThirdParty.OpenApi.Tests
         public async Task ModerateContentAsync_ReturnsModerationResponse()
         {
             // Arrange
-            var verificationContentEngine = new VerificationContentEngine("api-key");
+            var verificationContentEngine = new VerificationContentEngine("");
 
             // Act
             var verificationResult = await verificationContentEngine.Verify("Test content");
