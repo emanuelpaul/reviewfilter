@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\ReviewFilter.ThirdParty.MachineLearning\ReviewFilter.ThirdParty.MachineLearning.csproj" />
       <ProjectReference Include="..\ReviewFilter.ThirdParty.OpenApi\ReviewFilter.ThirdParty.OpenApi.csproj" />
     </ItemGroup>
 

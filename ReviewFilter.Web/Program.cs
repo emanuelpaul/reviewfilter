@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ReviewFilter.ThirdParty.OpenApi;
 using ReviewFilter.Web.NewReviewsStorage;
+using ReviewFilter.ThirdParty.MachineLearning;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddOpenApi(builder.Configuration["ApiKey"]!);
 builder.Services.AddDbContext<NewReviewsDbContext>(opts=>
     opts.UseSqlite(builder.Configuration.GetConnectionString("NewReviews")));
-
+builder.Services.AddMachineLearning(builder.Configuration["MachineLearningFilePath"]!);
 var app = builder.Build();
 
 app.Services.CreateScope().ServiceProvider.GetRequiredService<NewReviewsDbContext>().Database.EnsureCreated();

@@ -6,5 +6,6 @@ namespace ReviewFilter.Web.Models
     {
         public string? InputContent { get; set; }
         public VerificationResult? VerificationResult { get; set; }
+        public string MLResult { get; set; }
     }
 }
