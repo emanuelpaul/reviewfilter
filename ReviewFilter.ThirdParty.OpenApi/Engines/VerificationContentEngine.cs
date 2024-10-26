@@ -12,13 +12,13 @@ namespace ReviewFilter.ThirdParty.OpenApi.Engines
             _apiKey = apiKey;
         }
 
-        public async Task<VerificationResult> Verify(string content)
+        public async Task<VerificationResult> Verify(string? content)
         {
             var moderationClient = new OpenAIModerationClient(_apiKey);
 
             try
             {
-                var moderationResult = await moderationClient.ModerateContentAsync("Test content");
+                var moderationResult = await moderationClient.ModerateContentAsync(content);
 
                 if (moderationResult == null || 
                     moderationResult.results == null || 

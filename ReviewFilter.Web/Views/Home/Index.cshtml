@@ -1,62 +1,37 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model ReviewFilter.Web.Models.HomeViewModel
+
+@{
+    ViewBag.Title = "Content Verification";
 }
 
-<div class="text-center">
-    <body>
-        <div class="review-container">
-            <textarea class="review-input" rows="10" placeholder="Write your review here..."></textarea>
-            <button class="send-button" onclick="showResult()">Send review</button>
+<h2>Content Verification</h2>
 
-            <div class="empty-error-message" style="display: none; color: red; font-size: 14px; margin-top: 10px;">
-                The field is empty. Please enter your review.
-            </div>
+<form asp-action="VerifyContent" method="post">
+    <div class="review-container">
+        <label for="InputContent">Input Content</label>
+        <textarea id="InputContent" name="InputContent" class="review-input" rows="4">@Model.InputContent</textarea>
+
+        <button type="submit" class="send-button">Verify</button>
+    </div>
+</form>
+
+@if (Model.VerificationResult != null)
+{
+    <div class="mt-3">
+        <h4>Verification Result</h4>
+        <div class="alert @(Model.VerificationResult.Success ? "alert-success" : "alert-danger")">
+            @if (Model.VerificationResult.Success)
+            {
+                <p>Verification successful!</p>
+                <p>Sexual Content: @Model.VerificationResult.SexualContent%</p>
+                <p>Hate Content: @Model.VerificationResult.HateContent%</p>
+                <p>Harassment Content: @Model.VerificationResult.HarassmentContent%</p>
+            }
+            else
+            {
+                <p>Verification failed!</p>
+                <p>Error: @Model.VerificationResult.ErrorMessage</p>
+            }
         </div>
-
-        <div class="review-result-container" style="display: none; margin-top: 30px;">
-            <h4>Results</h4>
-            <hr />
-            <div class="row">
-                <div class="results-messages"></div>
-            </div>
-        </div>
-    </body>
-</div>
-
-<script>
-    function showResult() {
-        const textarea = document.querySelector('.review-input');
-        const resultContainer = document.querySelector('.results-messages');
-        const reviewResultContainer = document.querySelector('.review-result-container');
-        const emptyErrorMessage = document.querySelector('.empty-error-message');
-
-        reviewResultContainer.style.display = 'none';
-
-        emptyErrorMessage.style.display = 'none';
-
-        if (!textarea.value.trim()) {
-            emptyErrorMessage.style.display = 'block';
-            return;
-        }
-
-        resultContainer.innerHTML = "";
-
-        reviewResultContainer.style.display = 'block';
-
-        const results = [
-            "Problem 1: test1",
-            "Problem 2: test2",
-            "Problem 3: test3",
-            "Problem 4: test4"
-        ];
-
-        results.forEach(resultText => {
-            const resultEvent = document.createElement('div');
-            resultEvent.classList.add('resultMessage');
-            resultEvent.textContent = resultText;
-            resultContainer.appendChild(resultEvent);
-        });
-
-        resultContainer.style.opacity = 1;
-    }
-</script>
+    </div>
+}

@@ -6,4 +6,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ReviewFilter.ThirdParty.OpenApi\ReviewFilter.ThirdParty.OpenApi.csproj" />
+    </ItemGroup>
+
 </Project>

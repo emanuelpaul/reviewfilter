@@ -15,7 +15,7 @@ namespace ReviewFilter.ThirdParty.OpenApi.Clients
             _apiKey = apiKey ?? throw new ArgumentNullException(nameof(apiKey));
         }
 
-        public async Task<ModerationResponse> ModerateContentAsync(string content)
+        public async Task<ModerationResponse> ModerateContentAsync(string? content)
         {
             if (string.IsNullOrWhiteSpace(content))
             {
