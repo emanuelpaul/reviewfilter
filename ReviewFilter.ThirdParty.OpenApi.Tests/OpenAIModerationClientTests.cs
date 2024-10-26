@@ -9,7 +9,7 @@ namespace ReviewFilter.ThirdParty.OpenApi.Tests
         public async Task ModerateContentAsync_ReturnsCorrectModerationResponse()
         {
             // Arrange
-            var moderationClient = new OpenAIModerationClient("api-key");
+            var moderationClient = new OpenAIModerationClient("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");
 
             // Act
             var result = await moderationClient.ModerateContentAsync("Test content");
