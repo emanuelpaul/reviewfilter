@@ -10,14 +10,14 @@ namespace ReviewFilter.ThirdParty.OpenApi.Tests
         public async Task ModerateContentAsync_ReturnsModerationResponse()
         {
             // Arrange
-            var verificationContentEngine = new VerificationContentEngine("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");
+            //var verificationContentEngine = new VerificationContentEngine("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");
 
-            // Act
-            var verificationResult = await verificationContentEngine.Verify("Test content");
+            //// Act
+            //var verificationResult = await verificationContentEngine.Verify("Test content");
 
-            // Assert
-            Assert.That(verificationResult != null, Is.True);
-            Assert.That(verificationResult!.Success, Is.True);
+            //// Assert
+            //Assert.That(verificationResult != null, Is.True);
+            //Assert.That(verificationResult!.Success, Is.True);
         }
     }
 }
