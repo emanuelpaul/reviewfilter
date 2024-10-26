@@ -28,7 +28,8 @@
                 <p>Harassment Content: @Model.VerificationResult.HarassmentContent</p>
                 <p>ML result: @Model.MLResult</p>
                 <p>Exaggerated word count: @Model.ExaggeratedWordsCount</p>
-                <p>Similarity result:  @($"{Model.SimilarityResult * 100:F2}%")</p>
+@*                 <p>Similarity result:  @($"{Model.SimilarityResult * 100:F2}%")</p> *@
+                <p>Similar review count: @Model.SimilarReviewsCount</p>
             }
             else
             {

@@ -402,3 +402,5 @@ FodyWeavers.xsd
 appsettings.Development.json
 
 NewReviews.db
+NewReviews.db-shm
+NewReviews.db-wal

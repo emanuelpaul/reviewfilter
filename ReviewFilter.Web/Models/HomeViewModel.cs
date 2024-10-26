@@ -9,6 +9,6 @@ namespace ReviewFilter.Web.Models
         public string MLResult { get; set; }
         
         public int ExaggeratedWordsCount { get; set; }
-        public double SimilarityResult { get; set; }
+        public int SimilarReviewsCount { get; set; }
     }
 }

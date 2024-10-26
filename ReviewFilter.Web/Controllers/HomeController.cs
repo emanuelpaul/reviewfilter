@@ -26,7 +26,14 @@ public class HomeController(
     public async Task<IActionResult> VerifyContent(HomeViewModel model)
     {
         model.VerificationResult = await verificationContentEngine.Verify(model.InputContent);
-        model.SimilarityResult = await verificationContentEngine.VerifySimilarities(model.InputContent ?? "", "Acesta este un test");
+        model.SimilarReviewsCount = 0;
+        foreach (string dbReview in dbContext.NewReviews.Select( x => x.ReviewText))
+        {
+            var score = await verificationContentEngine.VerifySimilarities(model.InputContent ?? "", dbReview);
+            if(score > 0.90)
+                model.SimilarReviewsCount++;
+        }
+
         model.MLResult = machineLearningService.Analize(model.InputContent);
         dbContext.NewReviews.Add(new NewReview { ReviewText = model.InputContent });
         dbContext.SaveChanges();
