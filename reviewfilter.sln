@@ -3,19 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviewFilter.ThirdParty.OpenApi", "ReviewFilter.ThirdParty.OpenApi\ReviewFilter.ThirdParty.OpenApi.csproj", "{EE294C4D-BF3C-4C3D-BB8B-EE937456EEFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReviewFilter.ThirdParty.OpenApi", "ReviewFilter.ThirdParty.OpenApi\ReviewFilter.ThirdParty.OpenApi.csproj", "{EE294C4D-BF3C-4C3D-BB8B-EE937456EEFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviewFilter.ThirdParty.OpenApi.Tests", "ReviewFilter.ThirdParty.OpenApi.Tests\ReviewFilter.ThirdParty.OpenApi.Tests.csproj", "{84A2A7B8-63B2-4F99-B909-29FB4596B060}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReviewFilter.ThirdParty.OpenApi.Tests", "ReviewFilter.ThirdParty.OpenApi.Tests\ReviewFilter.ThirdParty.OpenApi.Tests.csproj", "{84A2A7B8-63B2-4F99-B909-29FB4596B060}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviewFilter.Web", "ReviewFilter.Web\ReviewFilter.Web.csproj", "{0149F930-5B24-4068-B178-C79BDDF3F5F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReviewFilter.Web", "ReviewFilter.Web\ReviewFilter.Web.csproj", "{0149F930-5B24-4068-B178-C79BDDF3F5F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReviewFilter.ThirdParty.MachineLearning", "ReviewFilter.ThirdParty.MachineLearning\ReviewFilter.ThirdParty.MachineLearning.csproj", "{07B0C663-EDCB-4873-A571-8D8860E7AFDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviewFilter.ThirdParty.MachineLearning.Tests", "ReviewFilter.ThirdParty.MachineLearning.Tests\ReviewFilter.ThirdParty.MachineLearning.Tests.csproj", "{BC027E83-E6D5-4D9C-AE47-4F764783585C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{EE294C4D-BF3C-4C3D-BB8B-EE937456EEFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +31,19 @@ Global
 		{0149F930-5B24-4068-B178-C79BDDF3F5F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0149F930-5B24-4068-B178-C79BDDF3F5F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0149F930-5B24-4068-B178-C79BDDF3F5F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07B0C663-EDCB-4873-A571-8D8860E7AFDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07B0C663-EDCB-4873-A571-8D8860E7AFDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07B0C663-EDCB-4873-A571-8D8860E7AFDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07B0C663-EDCB-4873-A571-8D8860E7AFDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC027E83-E6D5-4D9C-AE47-4F764783585C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC027E83-E6D5-4D9C-AE47-4F764783585C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC027E83-E6D5-4D9C-AE47-4F764783585C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC027E83-E6D5-4D9C-AE47-4F764783585C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51F7CB6E-AB58-4EA0-BFF7-303DB1311A10}
 	EndGlobalSection
 EndGlobal
