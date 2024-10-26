@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace ReviewFilter.ThirdParty.OpenApi
+namespace ReviewFilter.ThirdParty.OpenApi.Models
 {
-    public class ModerationResponse
+    internal class ModerationResponse
     {
         public string? id { get; set; }
 

@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace ReviewFilter.ThirdParty.OpenApi
+namespace ReviewFilter.ThirdParty.OpenApi.Models
 {
-    public class ModerationResult
+    internal class ModerationResult
     {
         public bool flagged { get; set; }
         public Categories? categories { get; set; }

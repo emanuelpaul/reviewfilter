@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace ReviewFilter.ThirdParty.OpenApi
+namespace ReviewFilter.ThirdParty.OpenApi.Models
 {
-    public class CategoryScores
+    internal class CategoryScores
     {
         public double sexual { get; set; }
         public double hate { get; set; }

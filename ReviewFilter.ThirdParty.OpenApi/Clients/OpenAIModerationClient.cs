@@ -1,10 +1,11 @@
 ﻿using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
+using ReviewFilter.ThirdParty.OpenApi.Models;
 
-namespace ReviewFilter.ThirdParty.OpenApi
+namespace ReviewFilter.ThirdParty.OpenApi.Clients
 {
-    public class OpenAIModerationClient
+    internal class OpenAIModerationClient
     {
         private readonly string _apiKey;
         private static readonly string moderationEndpoint = "https://api.openai.com/v1/moderations";
