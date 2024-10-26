@@ -4,30 +4,30 @@ namespace ReviewFilter.ThirdParty.OpenApi.Models
 {
     internal class CategoryScores
     {
-        public double sexual { get; set; }
-        public double hate { get; set; }
-        public double harassment { get; set; }
+        public decimal sexual { get; set; }
+        public decimal hate { get; set; }
+        public decimal harassment { get; set; }
 
         [JsonProperty("self-harm")]
-        public double selfharm { get; set; }
+        public decimal selfharm { get; set; }
 
         [JsonProperty("sexual/minors")]
-        public double sexualminors { get; set; }
+        public decimal sexualminors { get; set; }
 
         [JsonProperty("hate/threatening")]
-        public double hatethreatening { get; set; }
+        public decimal hatethreatening { get; set; }
 
         [JsonProperty("violence/graphic")]
-        public double violencegraphic { get; set; }
+        public decimal violencegraphic { get; set; }
 
         [JsonProperty("self-harm/intent")]
-        public double selfharmintent { get; set; }
+        public decimal selfharmintent { get; set; }
 
         [JsonProperty("self-harm/instructions")]
-        public double selfharminstructions { get; set; }
+        public decimal selfharminstructions { get; set; }
 
         [JsonProperty("harassment/threatening")]
-        public double harassmentthreatening { get; set; }
-        public double violence { get; set; }
+        public decimal harassmentthreatening { get; set; }
+        public decimal violence { get; set; }
     }
 }

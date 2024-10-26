@@ -7,8 +7,8 @@ namespace ReviewFilter.ThirdParty.OpenApi.Models
         public bool Success { get; internal set; }
         public string? ErrorMessage { get; internal set; }
         public string? StackTrace { get; internal set; }
-        public double SexualContent { get; set; }
-        public double HateContent { get; set; }
-        public double HarassmentContent { get; set; }
+        public decimal SexualContent { get; set; }
+        public decimal HateContent { get; set; }
+        public decimal HarassmentContent { get; set; }
     }
 }
