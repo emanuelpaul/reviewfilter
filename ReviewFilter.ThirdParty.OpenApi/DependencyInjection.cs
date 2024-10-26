@@ -9,7 +9,7 @@ public static class DependencyInjection
 {
     public static void AddOpenApi(this IServiceCollection services, string apiKey)
     {
-        services.AddHttpClient<OpenAIModerationClient>(httpClient =>
+        services.AddHttpClient<OpenAIClient>(httpClient =>
         {
             httpClient.BaseAddress = new Uri("https://api.openai.com");
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);

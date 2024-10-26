@@ -21,6 +21,7 @@ public class HomeController(IVerificationContentEngine verificationContentEngine
     public async Task<IActionResult> VerifyContent(HomeViewModel model)
     {
         model.VerificationResult = await verificationContentEngine.Verify(model.InputContent);
+        model.SimilarityResult = await verificationContentEngine.VerifySimilarities(model.InputContent ?? "", "Acesta este un test");
         model.MLResult = machineLearningService.Analize(model.InputContent);
         dbContext.NewReviews.Add(new NewReview { ReviewText = model.InputContent });
         dbContext.SaveChanges();

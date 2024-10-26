@@ -4,7 +4,7 @@
     ViewBag.Title = "Content Verification";
 }
 
-<h2>Content Verification</h2>
+<h2>Review Verification</h2>
 
 <form asp-action="VerifyContent" method="post">
     <div class="review-container">
@@ -27,6 +27,7 @@
                 <p>Hate Content: @Model.VerificationResult.HateContent</p>
                 <p>Harassment Content: @Model.VerificationResult.HarassmentContent</p>
                 <p>ML result: @Model.MLResult</p>
+                <p>Similarity result:  @($"{Model.SimilarityResult * 100:F2}%")</p>
             }
             else
             {
