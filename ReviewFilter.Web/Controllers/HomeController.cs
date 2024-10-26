@@ -6,17 +6,8 @@ using ReviewFilter.Web.Models;
 
 namespace ReviewFilter.Web.Controllers;
 
-public class HomeController : Controller
+public class HomeController(IVerificationContentEngine verificationContentEngine) : Controller
 {
-    private readonly IConfiguration _configuration;
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(IConfiguration configuration, ILogger<HomeController> logger)
-    {
-        _logger = logger;
-        _configuration = configuration;
-    }
-
     [HttpGet]
     public IActionResult Index()
     {
@@ -26,10 +17,6 @@ public class HomeController : Controller
     [HttpPost]
     public async Task<IActionResult> VerifyContent(HomeViewModel model)
     {
-        var apiKey = _configuration["ApiKey"]!;
-
-        var verificationContentEngine = new VerificationContentEngine(apiKey);
-
         model.VerificationResult = await verificationContentEngine.Verify(model.InputContent);
 
         // Return the updated model to the view

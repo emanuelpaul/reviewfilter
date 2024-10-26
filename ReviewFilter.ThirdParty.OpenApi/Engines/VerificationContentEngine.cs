@@ -3,19 +3,10 @@ using ReviewFilter.ThirdParty.OpenApi.Models;
 
 namespace ReviewFilter.ThirdParty.OpenApi.Engines
 {
-    public class VerificationContentEngine
+    internal class VerificationContentEngine(OpenAIModerationClient moderationClient) : IVerificationContentEngine
     {
-        private readonly string _apiKey;
-
-        public VerificationContentEngine(string apiKey)
-        {
-            _apiKey = apiKey;
-        }
-
         public async Task<VerificationResult> Verify(string? content)
         {
-            var moderationClient = new OpenAIModerationClient(_apiKey);
-
             try
             {
                 var moderationResult = await moderationClient.ModerateContentAsync(content);
@@ -51,5 +42,10 @@ namespace ReviewFilter.ThirdParty.OpenApi.Engines
                 };
             }
         }
+    }
+
+    public interface IVerificationContentEngine
+    {
+        Task<VerificationResult> Verify(string? content);
     }
 }

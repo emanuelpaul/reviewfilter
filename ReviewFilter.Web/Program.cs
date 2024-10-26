@@ -1,7 +1,10 @@
+using ReviewFilter.ThirdParty.OpenApi;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddOpenApi(builder.Configuration["ApiKey"]!);
 
 var app = builder.Build();
 
