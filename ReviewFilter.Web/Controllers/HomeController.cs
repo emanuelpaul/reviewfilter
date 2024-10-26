@@ -32,7 +32,7 @@ public class HomeController(
 
         string cleanedInput = CleanInput(model.InputContent);
         model.ExaggeratedWordsCount = 0;
-        foreach (string exaggeratedWord in configuration.GetValue<string[]>("exaggeratedWords"))
+        foreach (string exaggeratedWord in configuration.GetSection("exaggeratedWords").Get<string[]>())
         {
             if (cleanedInput.Contains(exaggeratedWord))
             {
