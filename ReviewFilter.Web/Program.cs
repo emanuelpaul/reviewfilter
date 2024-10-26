@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddOpenApi(builder.Configuration["ApiKey"]!);
 builder.Services.AddDbContext<NewReviewsDbContext>(opts=>
     opts.UseSqlite(builder.Configuration.GetConnectionString("NewReviews")));
-builder.Services.AddMachineLearning(builder.Configuration["MachineLearningFilePath"]!);
+builder.Services.AddMachineLearning("train-dataset 1.csv");
 var app = builder.Build();
 
 app.Services.CreateScope().ServiceProvider.GetRequiredService<NewReviewsDbContext>().Database.EnsureCreated();
