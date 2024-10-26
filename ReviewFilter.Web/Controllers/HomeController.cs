@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using ReviewFilter.ThirdParty.OpenApi.Engines;
 using ReviewFilter.ThirdParty.OpenApi.Models;
 using ReviewFilter.Web.Models;
+using ReviewFilter.Web.NewReviewsStorage;
 
 namespace ReviewFilter.Web.Controllers;
 
-public class HomeController(IVerificationContentEngine verificationContentEngine) : Controller
+public class HomeController(IVerificationContentEngine verificationContentEngine,
+    NewReviewsDbContext dbContext) : Controller
 {
     [HttpGet]
     public IActionResult Index()
@@ -18,6 +20,9 @@ public class HomeController(IVerificationContentEngine verificationContentEngine
     public async Task<IActionResult> VerifyContent(HomeViewModel model)
     {
         model.VerificationResult = await verificationContentEngine.Verify(model.InputContent);
+
+        dbContext.NewReviews.Add(new NewReview { ReviewText = model.InputContent });
+        dbContext.SaveChanges();
 
         // Return the updated model to the view
         return View("Index", model);
