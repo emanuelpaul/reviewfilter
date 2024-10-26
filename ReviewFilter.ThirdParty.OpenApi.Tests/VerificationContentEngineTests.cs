@@ -10,7 +10,7 @@ namespace ReviewFilter.ThirdParty.OpenApi.Tests
         public async Task ModerateContentAsync_ReturnsModerationResponse()
         {
             // Arrange
-            var verificationContentEngine = new VerificationContentEngine("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");
+            var verificationContentEngine = new VerificationContentEngine("api-key");
 
             // Act
             var verificationResult = await verificationContentEngine.Verify("Test content");
