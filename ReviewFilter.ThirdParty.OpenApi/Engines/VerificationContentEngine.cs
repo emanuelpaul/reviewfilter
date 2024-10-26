@@ -55,7 +55,7 @@ namespace ReviewFilter.ThirdParty.OpenApi.Engines
                 // Calculate cosine similarity between the embeddings
                 return CosineSimilarity(embedding1, embedding2);
             }
-            catch
+            catch(Exception ex)
             {
                 return 0;
             }
