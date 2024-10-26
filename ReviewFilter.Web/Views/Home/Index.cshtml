@@ -3,6 +3,60 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <body>
+        <div class="review-container">
+            <textarea class="review-input" rows="10" placeholder="Write your review here..."></textarea>
+            <button class="send-button" onclick="showResult()">Send review</button>
+
+            <div class="empty-error-message" style="display: none; color: red; font-size: 14px; margin-top: 10px;">
+                The field is empty. Please enter your review.
+            </div>
+        </div>
+
+        <div class="review-result-container" style="display: none; margin-top: 30px;">
+            <h4>Results</h4>
+            <hr />
+            <div class="row">
+                <div class="results-messages"></div>
+            </div>
+        </div>
+    </body>
 </div>
+
+<script>
+    function showResult() {
+        const textarea = document.querySelector('.review-input');
+        const resultContainer = document.querySelector('.results-messages');
+        const reviewResultContainer = document.querySelector('.review-result-container');
+        const emptyErrorMessage = document.querySelector('.empty-error-message');
+
+        reviewResultContainer.style.display = 'none';
+
+        emptyErrorMessage.style.display = 'none';
+
+        if (!textarea.value.trim()) {
+            emptyErrorMessage.style.display = 'block';
+            return;
+        }
+
+        resultContainer.innerHTML = "";
+
+        reviewResultContainer.style.display = 'block';
+
+        const results = [
+            "Problem 1: test1",
+            "Problem 2: test2",
+            "Problem 3: test3",
+            "Problem 4: test4"
+        ];
+
+        results.forEach(resultText => {
+            const resultEvent = document.createElement('div');
+            resultEvent.classList.add('resultMessage');
+            resultEvent.textContent = resultText;
+            resultContainer.appendChild(resultEvent);
+        });
+
+        resultContainer.style.opacity = 1;
+    }
+</script>
