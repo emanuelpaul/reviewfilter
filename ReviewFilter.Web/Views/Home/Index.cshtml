@@ -28,7 +28,7 @@
                 <hr/>
                 <p>ML result: @Model.MLResult [CG (Fake- computer generated) and  OG (valid)]</p>
                 <p>Exaggerated word count: @Model.ExaggeratedWordsCount</p>
-@*                 <p>Similarity result:  @($"{Model.SimilarityResult * 100:F2}%")</p> *@
+                <p>Similarity result:  @($"{Model.SimilarReviewsCount * 100:F2}%")</p>
                 <p>Similar review count: @Model.SimilarReviewsCount (AI api limited for 3 request per minute)</p>
                 <h3>Conclusion:</h3>
                 <p>@Model.Conclusion</p>
