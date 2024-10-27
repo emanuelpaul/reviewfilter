@@ -104,3 +104,15 @@ hr {
     border-radius: 8px;
     background-color: #ffffff;
 }
+
+.conclusion-description-container {
+    text-align: justify;
+    font-style:italic;
+    font-size: 18px;
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #ffffff;
+}

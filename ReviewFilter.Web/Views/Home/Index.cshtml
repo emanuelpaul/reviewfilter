@@ -4,7 +4,7 @@
     ViewBag.Title = "Content Verification";
 }
 
-<h2>AI for Fake Review Detection</h2>
+<h1>AI for Fake Review Detection</h1>
 
 <form asp-action="VerifyContent" method="post">
     <div class="review-container">
@@ -17,19 +17,21 @@
 @if (Model.VerificationResult != null)
 {
     <div class="mt-3">
-        <h4>Detection results</h4>
+        <h2>Detection results</h2>
         <div class="alert @(Model.VerificationResult.Success ? "alert-success" : "alert-danger")">
             @if (Model.VerificationResult.Success)
             {
-                <p>Possible sexual content: @Model.VerificationResult.SexualContent.ToString("0.000")</p>
-                <p>Possible hate content: @Model.VerificationResult.HateContent.ToString("0.000")</p>
-                <p>Possible harassment content: @Model.VerificationResult.HarassmentContent.ToString("0.000")</p>
+                <p>Possible sexual content: @Model.VerificationResult.SexualContent</p>
+                <p>Possible hate content: @Model.VerificationResult.HateContent</p>
+                <p>Possible harassment content: @Model.VerificationResult.HarassmentContent</p>
                 <p>Sentiment: @Model.VerificationResult.Sentiment</p>
                 <hr/>
                 <p>ML result: @Model.MLResult [CG (Fake- computer generated) and  OG (valid)]</p>
                 <p>Exaggerated word count: @Model.ExaggeratedWordsCount</p>
 @*                 <p>Similarity result:  @($"{Model.SimilarityResult * 100:F2}%")</p> *@
                 <p>Similar review count: @Model.SimilarReviewsCount (AI api limited for 3 request per minute)</p>
+                <h3>Conclusion:</h3>
+                <p>@Model.Conclusion</p>
             }
             else
             {
@@ -37,6 +39,55 @@
                 <p>Error: @Model.VerificationResult.ErrorMessage</p>
             }
         </div>
+    </div>
+
+    <div class="conclusion-description-container">
+        <h4>Conclusion calculation description:</h4>
+
+        <p>This function is used to analyze the results of a review verification process and determine if the review is likely to be fake. The analysis is based on various factors such as sentiment, machine learning results, exaggerated words, similar reviews, and content flags for inappropriate content. The function calculates a "fake score" based on these factors, and provides a conclusion about the authenticity of the review.</p>
+
+        <h5>Key Steps in the Function:</h5>
+        <ol>
+            <li><strong>Initialize the Fake Score:</strong> The function starts by initializing a <code>fakeScore</code> variable to 0. This will accumulate weights based on the different factors related to fake review detection.</li>
+
+            <li>
+                <strong>Fabricated Positive Review:</strong>
+                <p>If the sentiment of the review is positive, and one or more of the following conditions are met:</p>
+                <ul>
+                    <li>The machine learning result indicates it is computer-generated (<code>MLResult == "CG"</code>),</li>
+                    <li>The review contains more than 2 exaggerated words,</li>
+                    <li>The review has more than 3 similar reviews,</li>
+                </ul>
+                <p>Then, <code>0.2</code> is added to the <code>fakeScore</code>.</p>
+            </li>
+
+            <li>
+                <strong>Fabricated Negative Review:</strong>
+                <p>If the sentiment of the review is negative, and the same conditions apply (as above for positive reviews), another <code>0.2</code> is added to the <code>fakeScore</code>.</p>
+            </li>
+
+            <li>
+                <strong>ML Result Contribution:</strong>
+                <p>If the machine learning result indicates that the review is computer-generated (<code>MLResult == "CG"</code>), an additional <code>0.4</code> is added to the <code>fakeScore</code>.</p>
+            </li>
+
+            <li>
+                <strong>Content Flags:</strong>
+                <p>The function checks if the review contains inappropriate content based on three flags: sexual content, hate content, and harassment content. If any of these exceed a threshold of <code>0.01</code>, <code>0.1</code> is added to the <code>fakeScore</code> for each flag triggered.</p>
+            </li>
+
+            <li>
+                <strong>Final Decision:</strong>
+                <p>After calculating the <code>fakeScore</code>, the function compares it to a <code>fakeThreshold</code> of <code>0.5</code>.</p>
+                <ul>
+                    <li>If the <code>fakeScore</code> is greater than <code>0.5</code>, the review is deemed likely to be fake, and the function returns a message stating that the review is "likely to be FAKE" with a calculated percentage based on the fake score.</li>
+                    <li>If the <code>fakeScore</code> is less than or equal to <code>0.5</code>, the review is considered valid, and the function returns a message indicating that the review is "VALID" with a corresponding percentage.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h5>Returned Value:</h5>
+        <p>The function returns a string message that indicates whether the review is likely fake or valid, along with a percentage that reflects the likelihood of the conclusion.</p>
     </div>
 }
 
