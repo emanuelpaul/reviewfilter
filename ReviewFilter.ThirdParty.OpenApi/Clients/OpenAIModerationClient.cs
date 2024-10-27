@@ -12,16 +12,16 @@ namespace ReviewFilter.ThirdParty.OpenApi.Clients
     {
         private readonly string _apiKey;
 
-        public async Task<ModerationResponse> ModerateContentAsync(string? content)
+        public async Task<ModerationResponse> ModerateContentAsync(string? reviewContent)
         {
-            if (string.IsNullOrWhiteSpace(content))
+            if (string.IsNullOrWhiteSpace(reviewContent))
             {
-                throw new ArgumentException("Content cannot be null or empty", nameof(content));
+                throw new ArgumentException("Review cannot be null or empty", nameof(reviewContent));
             }
 
             var moderationRequest = new
             {
-                input = content
+                input = reviewContent
             };
             var response = await httpClient.PostAsJsonAsync("v1/moderations", moderationRequest);
             if (response.IsSuccessStatusCode)

@@ -7,11 +7,11 @@ namespace ReviewFilter.ThirdParty.OpenApi.Engines
 {
     internal class VerificationContentEngine(OpenAIClient openAiClient) : IVerificationContentEngine
     {
-        public async Task<VerificationResult> Verify(string? content)
+        public async Task<VerificationResult> Verify(string? reviewContent)
         {
             try
             {
-                var moderationResult = await openAiClient.ModerateContentAsync(content);
+                var moderationResult = await openAiClient.ModerateContentAsync(reviewContent);
 
                 if (moderationResult == null || 
                     moderationResult.results == null || 
@@ -75,7 +75,7 @@ namespace ReviewFilter.ThirdParty.OpenApi.Engines
 
     public interface IVerificationContentEngine
     {
-        Task<VerificationResult> Verify(string? content);
+        Task<VerificationResult> Verify(string? reviewContent);
 
         Task<double> VerifySimilarities(string text1, string text2);
     }

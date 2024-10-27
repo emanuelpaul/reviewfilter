@@ -94,3 +94,13 @@ hr {
         width: 60%;
     }
 }
+
+.criteria-container {
+    text-align: justify;
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #ffffff;
+}

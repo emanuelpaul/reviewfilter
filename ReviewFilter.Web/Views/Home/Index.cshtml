@@ -4,14 +4,13 @@
     ViewBag.Title = "Content Verification";
 }
 
-<h2>Review Verification</h2>
+<h2>AI for Fake Review Detection</h2>
 
 <form asp-action="VerifyContent" method="post">
     <div class="review-container">
-        <label for="InputContent">Input Content</label>
-        <textarea id="InputContent" name="InputContent" class="review-input" rows="4">@Model.InputContent</textarea>
+        <textarea id="InputContent" name="InputContent" class="review-input" rows="4" placeholder="Write a review.">@Model.ReviewContent</textarea>
 
-        <button type="submit" class="send-button">Verify</button>
+        <button type="submit" class="send-button">Submit the review</button>
     </div>
 </form>
 
@@ -22,11 +21,12 @@
         <div class="alert @(Model.VerificationResult.Success ? "alert-success" : "alert-danger")">
             @if (Model.VerificationResult.Success)
             {
-                <p>Verification successful!</p>
-                <p>Sexual Content: @Model.VerificationResult.SexualContent</p>
-                <p>Hate Content: @Model.VerificationResult.HateContent</p>
-                <p>Harassment Content: @Model.VerificationResult.HarassmentContent</p>
-                <p>ML result: @Model.MLResult</p>
+                <p>Review moderation results!</p>
+                <p>Possible sexual content: @Model.VerificationResult.SexualContent</p>
+                <p>Possible hate content: @Model.VerificationResult.HateContent</p>
+                <p>Possible harassment content: @Model.VerificationResult.HarassmentContent</p>
+                <hr/>
+                <p>ML result: @Model.MLResult [CG (Fake- computer generated) and  OG (valid)]</p>
                 <p>Exaggerated word count: @Model.ExaggeratedWordsCount</p>
 @*                 <p>Similarity result:  @($"{Model.SimilarityResult * 100:F2}%")</p> *@
                 <p>Similar review count: @Model.SimilarReviewsCount (AI api limited for 3 request per minute)</p>
@@ -39,3 +39,17 @@
         </div>
     </div>
 }
+
+<div class="criteria-container">
+    <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:115%;font-size:16px;font-family:"Aptos",sans-serif;'><strong>Jury Criteria:</strong>&nbsp;</p>
+    <ul style="list-style-type: disc;">
+        <li>How effectively did the solution identify fake reviews?</li>
+        <li>Is there a complete picture of the end goal of the tool? (e.g: we want to focus on these websites, or on these kinds of websites, for these languages, etc.)</li>
+        <li>Is there a clear idea of a data flow from ingestion (e.g: website scrapping) to result serving?</li>
+        <li>Is the processing time reasonable or is there an idea how to make it reasonable?</li>
+        <li>Result serving - what have they decided to include, what have they decided not to include and more importantly, why? Are the results visually confusing? Are they misleading?</li>
+        <li>&nbsp;What do they consider when determining the quality of a product? That is, how do they define a fake review? For the reviews that are deemed valid - how do they define a good review, what about a bad review? Do they go behind the reviews into the domain of the users generating the reviews - if, yes, how and why? If no, why?</li>
+        <li>Are there ideas that they did not have time to implement and are still a work in progress? What are those? (in the form of next steps if this were their start-up product)</li>
+        <li>ML specific process: pre-processing + data sources, training/finetuning + retraining (plans and drift), validation, model serving.</li>
+    </ul>
+</div>
