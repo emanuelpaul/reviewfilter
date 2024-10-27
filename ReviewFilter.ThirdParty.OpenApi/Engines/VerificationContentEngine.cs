@@ -26,12 +26,17 @@ namespace ReviewFilter.ThirdParty.OpenApi.Engines
 
                 var categoryScores = moderationResult.results![0].category_scores!;
 
+                var analyzerSentimentResponse = await openAiClient.AnalyzeSentimentAsync(reviewContent);
+
+                string sentiment = analyzerSentimentResponse?.choices?.FirstOrDefault()?.message?.content ?? "No sentiment available.";
+
                 return new VerificationResult
                 {
                     Success = true,
                     SexualContent = categoryScores.sexual,
                     HarassmentContent = categoryScores.harassment,
-                    HateContent = categoryScores.hate
+                    HateContent = categoryScores.hate,
+                    Sentiment = sentiment
                 };
             }
             catch (Exception ex)

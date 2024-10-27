@@ -10,5 +10,6 @@ namespace ReviewFilter.ThirdParty.OpenApi.Models
         public decimal SexualContent { get; set; }
         public decimal HateContent { get; set; }
         public decimal HarassmentContent { get; set; }
+        public object Sentiment { get; internal set; }
     }
 }

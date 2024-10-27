@@ -8,7 +8,7 @@
 
 <form asp-action="VerifyContent" method="post">
     <div class="review-container">
-        <textarea id="InputContent" name="InputContent" class="review-input" rows="4" placeholder="Write a review.">@Model.ReviewContent</textarea>
+        <textarea id="ReviewContent" name="ReviewContent" class="review-input" rows="4" placeholder="Write a review.">@Model.ReviewContent</textarea>
 
         <button type="submit" class="send-button">Submit the review</button>
     </div>
@@ -17,14 +17,14 @@
 @if (Model.VerificationResult != null)
 {
     <div class="mt-3">
-        <h4>Verification Result</h4>
+        <h4>Detection results</h4>
         <div class="alert @(Model.VerificationResult.Success ? "alert-success" : "alert-danger")">
             @if (Model.VerificationResult.Success)
             {
-                <p>Review moderation results!</p>
-                <p>Possible sexual content: @Model.VerificationResult.SexualContent</p>
-                <p>Possible hate content: @Model.VerificationResult.HateContent</p>
-                <p>Possible harassment content: @Model.VerificationResult.HarassmentContent</p>
+                <p>Possible sexual content: @Model.VerificationResult.SexualContent.ToString("0.000")</p>
+                <p>Possible hate content: @Model.VerificationResult.HateContent.ToString("0.000")</p>
+                <p>Possible harassment content: @Model.VerificationResult.HarassmentContent.ToString("0.000")</p>
+                <p>Sentiment: @Model.VerificationResult.Sentiment</p>
                 <hr/>
                 <p>ML result: @Model.MLResult [CG (Fake- computer generated) and  OG (valid)]</p>
                 <p>Exaggerated word count: @Model.ExaggeratedWordsCount</p>
